@@ -74,3 +74,4 @@ sudo cp /tmp/issue /etc/
 
 echo
 echo 'Done.'
+echo
