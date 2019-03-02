@@ -2,9 +2,7 @@
 
 # Created by yas 2019/03/01
 
-export SSH_PRIVATE_KEY=''
-
-if [ "x${SSH_PRIVATE_KEY}" = 'x' ]; then
+if [ "x${SSH_PRIVATE_KEY:-}" = 'x' ]; then
   echo "The variable not specified: 'SSH_PRIVATE_KEY'"
   exit 1
 fi
@@ -16,7 +14,10 @@ sudo apt -y update; sudo apt -y upgrade; sudo apt -y dist-upgrade; sudo apt -y a
 echo
 echo 'Creating SSH keys...'
 mkdir -p ~/.ssh/
-echo "${SSH_PRIVATE_KEY}" >> ~/.ssh/authorized_keys
+cat << SSH_PRIVATE_KEY >> '~/.ssh/authorized_keys'
+${SSH_PRIVATE_KEY}
+SSH_PRIVATE_KEY
+
 sudo mkdir -p /root/.ssh/
 sudo cp ~/.ssh/authorized_keys /root/.ssh/
 
