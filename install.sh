@@ -13,11 +13,17 @@ sudo apt -y update; sudo apt -y upgrade; sudo apt -y dist-upgrade; sudo apt -y a
 
 echo
 echo 'Creating SSH keys...'
-mkdir -p ~/.ssh/
+if [ ! -e ~/.ssh ]; then
+  mkdir -p ~/.ssh
+fi
+touch ~/.ssh/authorized_keys
 cat << SSH_PRIVATE_KEY >> '~/.ssh/authorized_keys'
 ${SSH_PRIVATE_KEY}
 SSH_PRIVATE_KEY
 
+if [ ! -e /root/.ssh ]; then
+  mkdir -p /root/.ssh
+fi
 sudo mkdir -p /root/.ssh/
 sudo cp ~/.ssh/authorized_keys /root/.ssh/
 
