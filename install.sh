@@ -18,7 +18,7 @@ echo 'Creating SSH keys...'
 if [ ! -e ~/.ssh ]; then
   mkdir -p ~/.ssh
 fi
-cat << 'SSH_PRIVATE_KEY' >> ~/.ssh/authorized_keys
+cat << SSH_PRIVATE_KEY >> ~/.ssh/authorized_keys
 ${SSH_PRIVATE_KEY}
 SSH_PRIVATE_KEY
 
