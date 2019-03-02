@@ -17,12 +17,12 @@ if [ ! -e ~/.ssh ]; then
   mkdir -p ~/.ssh
 fi
 touch ~/.ssh/authorized_keys
-cat << KEY >> '~/.ssh/authorized_keys'
+cat << SSH_PRIVATE_KEY >> '~/.ssh/authorized_keys'
 ${SSH_PRIVATE_KEY}
-KEY
+SSH_PRIVATE_KEY
 
 if [ ! -e /root/.ssh ]; then
-  mkdir -p /root/.ssh
+  sudo mkdir -p /root/.ssh
 fi
 sudo mkdir -p /root/.ssh/
 sudo cp ~/.ssh/authorized_keys /root/.ssh/
