@@ -71,6 +71,7 @@ Raspbian GNU/Linux 9
 
 ISSUE
 sudo cp /tmp/issue /etc/
+sudo cp /tmp/issue /etc/issue.net
 
 echo
 echo 'Done.'
