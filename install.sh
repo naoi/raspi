@@ -3,6 +3,7 @@
 # Created by yas 2019/03/01
 
 if [ "x${SSH_PRIVATE_KEY:-}" = 'x' ]; then
+  echo
   echo "The variable not specified: 'SSH_PRIVATE_KEY'"
   exit 1
 fi
