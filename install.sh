@@ -18,7 +18,7 @@ echo 'Creating SSH keys...'
 if [ ! -e ~/.ssh ]; then
   mkdir -p ~/.ssh
 fi
-cat << SSH_PRIVATE_KEY >> ~/.ssh/authorized_keys
+cat << 'SSH_PRIVATE_KEY' >> ~/.ssh/authorized_keys
 ${SSH_PRIVATE_KEY}
 SSH_PRIVATE_KEY
 
@@ -30,7 +30,7 @@ sudo cp ~/.ssh/authorized_keys /root/.ssh/
 
 echo
 echo 'Setting up command prompt...'
-cat << PS >> '.bashrc'
+cat << 'PS' >> ~/.bashrc
 
 export txt1='\[\033[38;05;202m\]'  # Red
 export txt2='\[\033[38;05;211m\]'  # Pink
@@ -62,7 +62,7 @@ sudo cp /tmp/environment /etc/
 
 echo
 echo 'Setting up /etc/issue...'
-sudo cat << ISSUE > '/tmp/issue'
+sudo cat << 'ISSUE' > /tmp/issue
 Raspbian GNU/Linux 9
 \s \m \r \v
 \d \t
