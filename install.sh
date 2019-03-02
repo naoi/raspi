@@ -17,9 +17,9 @@ if [ ! -e ~/.ssh ]; then
   mkdir -p ~/.ssh
 fi
 touch ~/.ssh/authorized_keys
-cat << SSH_PRIVATE_KEY >> '~/.ssh/authorized_keys'
+cat << KEY >> '~/.ssh/authorized_keys'
 ${SSH_PRIVATE_KEY}
-SSH_PRIVATE_KEY
+KEY
 
 if [ ! -e /root/.ssh ]; then
   mkdir -p /root/.ssh
