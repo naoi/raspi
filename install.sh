@@ -58,6 +58,8 @@ echo
 echo -n "Setting up the command prompt ('~/.bashrc')... "
 cat << 'PS' >> ~/.bashrc
 
+# Added by https://github.com/naoi/raspi/ $(date '+%Y/%m/%d')
+
 export txt1='\[\033[38;05;202m\]'  # Red
 export txt2='\[\033[38;05;211m\]'  # Pink
 export txt3='\[\033[38;05;204m\]'  # Shocking Pink
