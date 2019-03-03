@@ -3,7 +3,7 @@
 # Updated by yas 2019/03/02
 # Created by yas 2019/03/01
 
-
+echo
 echo -n 'Checking environment variables... '
 
 if [ "x${SSH_PRIVATE_KEY:-}" = 'x' ]; then
@@ -94,7 +94,7 @@ sudo cp /tmp/crontab /etc/
 echo 'Done'
 echo
 
-echo -n "Setting up /etc/local.gen ('${LOCALE}')... "
+echo "Setting up /etc/local.gen ('${LOCALE}')... "
 if [ "x${LOCALE}" != 'xen_GB.UTF-8' ]; then
   sudo sed -i -e 's/en_GB.UTF-8 UTF-8/# en_GB.UTF-8 UTF-8/g' /etc/locale.gen
   sudo sed -i -e "s/# ${LOCALE} UTF-8/${LOCALE} UTF-8/g" /etc/locale.gen
