@@ -56,10 +56,14 @@ echo 'Done'
 echo
 
 echo -n "Setting up the command prompt ('~/.bashrc')... "
-cat << 'PS' >> ~/.bashrc
+
+cat << PS >> ~/.bashrc
 
 # Added by https://github.com/naoi/raspi/ $(date '+%Y/%m/%d')
 
+PS
+
+cat << 'PS' >> ~/.bashrc
 export txt1='\[\033[38;05;202m\]'  # Red
 export txt2='\[\033[38;05;211m\]'  # Pink
 export txt3='\[\033[38;05;204m\]'  # Shocking Pink
@@ -70,6 +74,7 @@ export txtrst='\[\033[00m\]'       # Reset
 # Rose
 PS1="${txt1}[${txt2}\$(date +%m/%d) \$(date +%H:%M)${txt1}][${txt3}\u${txt1}@${txt3}\h${txt1}:${txt4}\w${txt1}]${txt4}\$ ${txtrst}"
 PS
+
 . ~/.bashrc
 
 echo 'Done'
