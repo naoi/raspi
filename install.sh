@@ -94,16 +94,13 @@ sudo cp /tmp/crontab /etc/
 echo 'Done'
 echo
 
-echo -n "Setting up /etc/local.gen ('${LOCALE}')... "
+echo "Setting up /etc/local.gen ('${LOCALE}')..."
 if [ "x${LOCALE}" != 'xen_GB.UTF-8' ]; then
   sudo sed -i -e 's/en_GB.UTF-8 UTF-8/# en_GB.UTF-8 UTF-8/g' /etc/locale.gen
   sudo sed -i -e "s/# ${LOCALE} UTF-8/${LOCALE} UTF-8/g" /etc/locale.gen
   sudo locale-gen ${LOCALE}
   sudo update-locale ${LOCALE}
 fi
-
-echo 'Done'
-echo
 
 echo -n "Setting up /etc/environment ('LC_ALL' and 'LANG')... "
 sudo rm -fr /etc/environment
