@@ -28,8 +28,7 @@ sudo apt -y update && sudo apt -y upgrade && sudo apt -y dist-upgrade && sudo ap
 
 echo
 echo 'Enabling sshd service...'
-sudo touch ssh
-sudo tourch /tmp/ssh
+sudo touch /tmp/ssh
 sudo cp /tmp/ssh /boot/
 
 echo
