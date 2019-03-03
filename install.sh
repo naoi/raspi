@@ -33,7 +33,7 @@ sudo apt -y update && sudo apt -y upgrade && sudo apt -y dist-upgrade && sudo ap
 echo 'Done'
 echo
 
-echo 'Enabling sshd service... '
+echo -n 'Enabling sshd service... '
 sudo touch /tmp/ssh
 sudo cp /tmp/ssh /boot/
 
