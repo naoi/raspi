@@ -133,5 +133,5 @@ sudo cp /tmp/issue /etc/issue.net
 echo 'Done'
 echo
 
-echo 'Done: Raspberry PI Installation'
+echo 'Done: Raspberry PI Installation.'
 echo
