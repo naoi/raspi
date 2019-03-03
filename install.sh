@@ -3,6 +3,9 @@
 # Updated by yas 2019/03/02
 # Created by yas 2019/03/01
 
+
+echo -n 'Checking environment variables... '
+
 if [ "x${SSH_PRIVATE_KEY:-}" = 'x' ]; then
   echo
   echo "The variable not specified: 'SSH_PRIVATE_KEY'"
@@ -21,7 +24,9 @@ if [ "x${TIMEZONE:-}" = 'x' ]; then
   exit 1
 fi
 
+echo 'Done'
 echo
+
 echo -n 'Updating Raspberry PI... '
 sudo apt -y update && sudo apt -y upgrade && sudo apt -y dist-upgrade && sudo apt -y autoremove && sudo apt -y autoclean
 
@@ -131,5 +136,5 @@ sudo cp /tmp/issue /etc/issue.net
 echo 'Done'
 echo
 
-echo 'Done.'
+echo 'Done: Raspberry PI Installation'
 echo
