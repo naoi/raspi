@@ -35,7 +35,7 @@ fi
 echo 'Done'
 
 echo
-eecho_count 'Updating Raspberry PI... '
+echo_count 'Updating Raspberry PI... '
 echo
 sudo apt -y update && sudo apt -y upgrade && sudo apt -y dist-upgrade && sudo apt -y autoremove && sudo apt -y autoclean
 
@@ -98,7 +98,7 @@ export TMP=$(cat /boot/cmdline.txt); export TMP="${TMP} logo.nologo"; echo ${TMP
 echo 'Done'
 
 echo
-echo_count 'Setting up /etc/crontab... '
+echo_count "Setting up '/etc/crontab'... "
 sudo rm -fr /tmp/crontab
 sudo cat /etc/crontab > /tmp/crontab
 sudo echo "0 0 * * * root sudo apt -y update && sudo apt -y upgrade && sudo apt -y dist-upgrade && sudo apt -y autoremove && sudo apt -y autoclean" >> /tmp/crontab
