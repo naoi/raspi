@@ -90,7 +90,8 @@ PS
 echo 'Done'
 
 echo
-echo_count 'Setting up /boot/config.txt... '
+echo_count "Setting up '/boot/config.txt'... "
+echo
 sudo rm -fr /tmp/config.txt
 sudo cat /boot/config.txt > /tmp/config.txt
 echo 'avoid_warnings=2' >> /tmp/config.txt
@@ -110,6 +111,7 @@ echo 'Done'
 
 echo
 echo_count "Setting up /etc/local.gen ('${LOCALE}')..."
+echo
 echo
 if [ "x${LOCALE}" != 'xen_GB.UTF-8' ]; then
   sudo sed -i -e 's/en_GB.UTF-8 UTF-8/# en_GB.UTF-8 UTF-8/g' /etc/locale.gen
