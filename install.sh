@@ -39,6 +39,7 @@ echo_count 'Updating Raspberry PI... '
 echo
 sudo apt -y update && sudo apt -y upgrade && sudo apt -y dist-upgrade && sudo apt -y autoremove && sudo apt -y autoclean
 
+echo
 echo_count 'Enabling sshd service... '
 sudo touch /tmp/ssh
 sudo cp /tmp/ssh /boot/
@@ -149,5 +150,5 @@ sudo cp /tmp/issue /etc/issue.net
 echo 'Done'
 
 echo
-echo 'Done: Raspberry PI Installation ('$(basename $0)').'
+echo "Done: Raspberry PI Installation ('$(basename $0)')."
 echo
