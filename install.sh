@@ -91,7 +91,6 @@ echo 'Done'
 
 echo
 echo_count "Setting up '/boot/config.txt'... "
-echo
 sudo rm -fr /tmp/config.txt
 sudo cat /boot/config.txt > /tmp/config.txt
 echo 'avoid_warnings=2' >> /tmp/config.txt
