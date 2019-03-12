@@ -37,6 +37,7 @@ echo 'Done'
 echo
 echo_count 'Updating Raspberry PI... '
 echo
+echo
 sudo apt -y update && sudo apt -y upgrade && sudo apt -y dist-upgrade && sudo apt -y autoremove && sudo apt -y autoclean
 
 echo
