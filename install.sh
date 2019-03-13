@@ -15,7 +15,7 @@ function echo_count () {
 echo
 echo_count 'Checking environment variables... '
 
-if [ "x${SSH_PRIVATE_KEY:-}" = 'x' ]; then
+if [ "x${SSH_PUBLIC_KEY:-}" = 'x' ]; then
   echo
   echo "The variable not specified: 'SSH_PRIVATE_KEY'"
   exit 1
@@ -52,9 +52,9 @@ echo_count "Creating SSH keys ('~/.ssh/authorized_keys' and '/root/.ssh/authoriz
 if [ ! -e ~/.ssh ]; then
   mkdir -p ~/.ssh
 fi
-cat << SSH_PRIVATE_KEY >> ~/.ssh/authorized_keys
-${SSH_PRIVATE_KEY}
-SSH_PRIVATE_KEY
+cat << SSH_PUBLIC_KEY >> ~/.ssh/authorized_keys
+${SSH_PUBLIC_KEY}
+SSH_PUBLIC_KEY
 
 if [ ! -e /root/.ssh ]; then
   sudo mkdir -p /root/.ssh
