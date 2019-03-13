@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# Updated by yas 2019/03/13.
 # Updated by yas 2019/03/11.
 # Updated by yas 2019/03/02.
 # Created by yas 2019/03/01.
@@ -17,7 +18,7 @@ echo_count 'Checking environment variables... '
 
 if [ "x${SSH_PUBLIC_KEY:-}" = 'x' ]; then
   echo
-  echo "The variable not specified: 'SSH_PRIVATE_KEY'"
+  echo "The variable not specified: 'SSH_PUBLIC_KEY'"
   exit 1
 fi
 
@@ -48,7 +49,7 @@ sudo cp /tmp/ssh /boot/
 echo 'Done'
 echo
 
-echo_count "Creating SSH keys ('~/.ssh/authorized_keys' and '/root/.ssh/authorized_keys')... "
+echo_count "Setting up '~/.ssh/authorized_keys' and '/root/.ssh/authorized_keys'... "
 if [ ! -e ~/.ssh ]; then
   mkdir -p ~/.ssh
 fi
