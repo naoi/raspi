@@ -110,7 +110,7 @@ sudo cp /tmp/crontab /etc/
 echo 'Done'
 
 echo
-echo_count "Setting up /etc/local.gen ('${LOCALE}')..."
+echo_count "Setting up '/etc/local.gen' ('${LOCALE}')..."
 echo
 echo
 if [ "x${LOCALE}" != 'xen_GB.UTF-8' ]; then
@@ -121,7 +121,7 @@ if [ "x${LOCALE}" != 'xen_GB.UTF-8' ]; then
 fi
 
 echo
-echo_count "Setting up /etc/environment ('LC_ALL' and 'LANG')... "
+echo_count "Setting up '/etc/environment' ('LC_ALL' and 'LANG')... "
 
 sudo rm -fr /etc/environment
 echo "LC_ALL=${LOCALE}" > /tmp/environment
@@ -131,14 +131,14 @@ sudo cp /tmp/environment /etc/
 echo 'Done'
 
 echo
-echo_count "Setting up /etc/localtime ('${TIMEZONE}')... "
+echo_count "Setting up '/etc/localtime' ('${TIMEZONE}')... "
 sudo rm /etc/localtime
 sudo ln -s /usr/share/zoneinfo/${TIMEZONE} /etc/localtime
 
 echo 'Done'
 
 echo
-echo_count 'Setting up /etc/issue and /etc/issue.net... '
+echo_count "Setting up '/etc/issue' and '/etc/issue.net'... "
 sudo cat << 'ISSUE' > /tmp/issue
 Raspbian GNU/Linux 9
 \s \m \r \v
