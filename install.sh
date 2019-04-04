@@ -112,7 +112,7 @@ echo -n "Setting up /etc/environment ('LC_ALL' and 'LANG')... "
 
 sudo rm -fr /etc/environment
 echo "LC_ALL=${LOCALE}" > /tmp/environment
-echo "LANG=${LOCALE}">> /tmp/environment
+echo "LANG=${LOCALE}" >> /tmp/environment
 sudo cp /tmp/environment /etc/
 
 echo 'Done'
