@@ -6,9 +6,9 @@
 echo
 echo -n 'Checking environment variables... '
 
-if [ "x${SSH_PRIVATE_KEY:-}" = 'x' ]; then
+if [ "x${SSH_PUBLIC_KEY:-}" = 'x' ]; then
   echo
-  echo "The variable not specified: 'SSH_PRIVATE_KEY'"
+  echo "The variable not specified: 'SSH_PUBLIC_KEY'"
   exit 1
 fi
 
@@ -42,9 +42,9 @@ echo -n "Creating SSH keys ('~/.ssh/authorized_keys' and '/root/.ssh/authorized_
 if [ ! -e ~/.ssh ]; then
   mkdir -p ~/.ssh
 fi
-cat << SSH_PRIVATE_KEY >> ~/.ssh/authorized_keys
-${SSH_PRIVATE_KEY}
-SSH_PRIVATE_KEY
+cat << SSH_PUBLIC_KEY >> ~/.ssh/authorized_keys
+${SSH_PUBLIC_KEY}
+SSH_PUBLIC_KEY
 
 if [ ! -e /root/.ssh ]; then
   sudo mkdir -p /root/.ssh
