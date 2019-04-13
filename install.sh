@@ -105,7 +105,7 @@ echo
 echo_count "Setting up '/etc/crontab'... "
 sudo rm -fr /tmp/crontab
 sudo cat /etc/crontab > /tmp/crontab
-sudo echo "0 0 * * * root sudo apt -y update && sudo apt -y upgrade && sudo apt -y dist-upgrade && sudo apt -y autoremove && sudo apt -y autoclean" >> /tmp/crontab
+sudo echo "0  0    * * * root sudo apt -y update && sudo apt -y upgrade && sudo apt -y dist-upgrade && sudo apt -y autoremove && sudo apt -y autoclean && sudo apt purge" >> /tmp/crontab
 sudo cp /tmp/crontab /etc/
 
 echo 'Done'
@@ -150,6 +150,25 @@ Raspbian GNU/Linux 9
 ISSUE
 sudo cp /tmp/issue /etc/
 sudo cp /tmp/issue /etc/issue.net
+
+echo 'Done'
+
+echo
+echo_count "Setting up 'wifi.sh'... "
+sudo cat << 'WIFI' > /tmp/wifi.sh
+#!/bin/bash
+
+export DEFAULT_GATEWAY=$(route | grep default | awk '{ print $2 }')
+ping -q -c 1 ${DEFAULT_GATEWAY}
+test $? -eq 1 && sudo /etc/ifplugd/action.d/action_wpa wlan0 up
+WIFI
+
+sudo chmod +x /tmp/wifi.sh
+sudo cp /tmp/wifi.sh /etc/cron.d/
+
+sudo cp /etc/crontab /tmp/crontab
+echo '*/1 *   * * *   root    sudo /etc/cron.d/wifi.sh' > /tmp/crontab
+sudo cp /tmp/wifi.sh /etc/cron.d/
 
 echo 'Done'
 
