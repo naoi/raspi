@@ -37,6 +37,27 @@ fi
 echo 'Done'
 
 echo
+echo_count "Setting up '/etc/local.gen' ('${LOCALE}')..."
+echo
+echo
+if [ "x${LOCALE}" != 'xen_GB.UTF-8' ]; then
+  sudo sed -i -e 's/en_GB.UTF-8 UTF-8/# en_GB.UTF-8 UTF-8/g' /etc/locale.gen
+  sudo sed -i -e "s/# ${LOCALE} UTF-8/${LOCALE} UTF-8/g" /etc/locale.gen
+  sudo locale-gen ${LOCALE}
+  sudo update-locale ${LOCALE}
+fi
+
+echo
+echo_count "Setting up '/etc/environment' ('LC_ALL' and 'LANG')... "
+
+sudo rm -fr /etc/environment
+echo "LC_ALL=${LOCALE}" > /tmp/environment
+echo "LANG=${LOCALE}" >> /tmp/environment
+sudo cp /tmp/environment /etc/
+
+echo 'Done'
+
+echo
 echo_count 'Updating Raspberry PI... '
 echo
 echo
@@ -107,27 +128,6 @@ sudo rm -fr /tmp/crontab
 sudo cat /etc/crontab > /tmp/crontab
 sudo echo "0  0    * * * root sudo apt -y update && sudo apt -y upgrade && sudo apt -y dist-upgrade && sudo apt -y autoremove && sudo apt -y autoclean && sudo apt purge" >> /tmp/crontab
 sudo cp /tmp/crontab /etc/
-
-echo 'Done'
-
-echo
-echo_count "Setting up '/etc/local.gen' ('${LOCALE}')..."
-echo
-echo
-if [ "x${LOCALE}" != 'xen_GB.UTF-8' ]; then
-  sudo sed -i -e 's/en_GB.UTF-8 UTF-8/# en_GB.UTF-8 UTF-8/g' /etc/locale.gen
-  sudo sed -i -e "s/# ${LOCALE} UTF-8/${LOCALE} UTF-8/g" /etc/locale.gen
-  sudo locale-gen ${LOCALE}
-  sudo update-locale ${LOCALE}
-fi
-
-echo
-echo_count "Setting up '/etc/environment' ('LC_ALL' and 'LANG')... "
-
-sudo rm -fr /etc/environment
-echo "LC_ALL=${LOCALE}" > /tmp/environment
-echo "LANG=${LOCALE}" >> /tmp/environment
-sudo cp /tmp/environment /etc/
 
 echo 'Done'
 
