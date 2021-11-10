@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# Updated by yas 2021/11/10.
 # Updated by yas 2019/04/04.
 # Updated by yas 2019/03/13.
 # Updated by yas 2019/03/11.
@@ -117,6 +118,8 @@ echo_count "Setting up '/boot/config.txt'... "
 sudo rm -fr /tmp/config.txt
 sudo cat /boot/config.txt > /tmp/config.txt
 echo 'avoid_warnings=2' >> /tmp/config.txt
+sudo sed -i -e 's/#hdmi_group=1/hdmi_group=1/g' /tmp/config.txt
+sudo sed -i -e 's/#hdmi_mode=1/hdmi_mode=1/g' /tmp/config.txt
 sudo cp /tmp/config.txt /boot/
 export TMP=$(cat /boot/cmdline.txt); export TMP="${TMP} logo.nologo"; echo ${TMP} > /tmp/cmdline.txt; sudo cp /tmp/cmdline.txt /boot/
 
@@ -169,6 +172,14 @@ sudo cp /tmp/wifi.sh /etc/cron.d/
 sudo cp /etc/crontab /tmp/crontab
 echo '*/1 *   * * *   root    sudo /etc/cron.d/wifi.sh' > /tmp/crontab
 sudo cp /tmp/wifi.sh /etc/cron.d/
+
+echo 'Done'
+
+echo
+echo_count "** NOTE: Removing swap packages to save the disk space... "
+sudo swapoff --all
+sudo apt-get purge -y --auto-remove dphys-swapfile
+sudo rm -fr /var/swap
 
 echo 'Done'
 
