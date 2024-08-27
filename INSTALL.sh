@@ -186,3 +186,11 @@ echo 'Done'
 echo
 echo "Done: Raspberry PI Installation ('$(basename $0)')."
 echo
+
+export MIN=$(( SECONDS / 60 ));
+export SEC=$(( SECONDS % 60 ));
+export ELAPSED="${MIN} min ${SEC} sec."
+
+echo
+echo "Done. ($ELAPSED)"
+echo
