@@ -163,7 +163,7 @@ sudo cat << 'WIFI' > /tmp/wifi.sh
 
 export DEFAULT_GATEWAY=$(route | grep default | awk '{ print $2 }')
 ping -q -c 1 ${DEFAULT_GATEWAY}
-test $? -eq 1 && sudo /etc/ifplugd/action.d/action_wpa wlan0 up
+test $? -eq 1 && sudo /etc/ifplugd/action.d/action_wpa wlan0 up &&  sudo /etc/ifplugd/action.d/action_wpa wlan1 up
 WIFI
 
 sudo chmod +x /tmp/wifi.sh
